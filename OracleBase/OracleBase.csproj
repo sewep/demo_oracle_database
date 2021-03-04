@@ -61,6 +61,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="View\InfoTables.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -74,12 +78,17 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Model\DataBase.cs" />
+    <Compile Include="Model\InfoTablePos.cs" />
     <Compile Include="Model\LoginData.cs" />
     <Compile Include="ViewModel\DbState.cs" />
     <Compile Include="ViewModel\DbStateToBrushConverter.cs" />
+    <Compile Include="ViewModel\InfoTablesVM.cs" />
     <Compile Include="ViewModel\LoginVM.cs" />
     <Compile Include="ViewModel\ObservedObject.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
+    <Compile Include="View\InfoTables.xaml.cs">
+      <DependentUpon>InfoTables.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>

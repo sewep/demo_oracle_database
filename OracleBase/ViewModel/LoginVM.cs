@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 namespace OracleBase.ViewModel
 {
     using Model;
-using System.Windows.Input;
-using System.Windows.Media;
+    using System.Windows.Input;
+    using System.Windows.Media;
 
 
-    class LoginVM : ObservedObject
+    public class LoginVM : ObservedObject
     {
         private LoginData loginData = new LoginData();
         private DataBase dataBase;

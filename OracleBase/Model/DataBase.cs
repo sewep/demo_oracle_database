@@ -1,6 +1,7 @@
 ﻿using Devart.Data.Oracle;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ namespace OracleBase.Model
 {
     class DataBase
     {
+        static DataBase instance = null;
         OracleConnection oracleConnection;
         LoginData loginData;
         public bool errorConnecting = false;
@@ -16,7 +18,16 @@ namespace OracleBase.Model
 
         public DataBase(LoginData loginData)
         {
+            if (instance != null) 
+                instance.CloseConnection(); // Clear previus instance if exist
+
+            instance = this;
             this.loginData = loginData;
+        }
+
+        public static DataBase Instance
+        {
+            get { return instance; }
         }
 
         public bool TryConnect()
@@ -52,9 +63,10 @@ namespace OracleBase.Model
             {
                 oracleConnection.Close();
                 oracleConnection = null;
-            } catch
+            } 
+            catch (Exception ex)
             {
-
+                Debug.WriteLine(ex.Message);
             }
         }
     }

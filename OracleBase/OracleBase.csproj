@@ -15,7 +15,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -73,7 +73,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Model\DataBase.cs" />
     <Compile Include="Model\LoginData.cs" />
+    <Compile Include="ViewModel\DbState.cs" />
+    <Compile Include="ViewModel\DbStateToBrushConverter.cs" />
     <Compile Include="ViewModel\LoginVM.cs" />
     <Compile Include="ViewModel\ObservedObject.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />

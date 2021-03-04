@@ -8,11 +8,18 @@ namespace OracleBase.ViewModel
 {
     using Model;
 using System.Windows.Input;
+using System.Windows.Media;
 
 
     class LoginVM : ObservedObject
     {
         private LoginData loginData = new LoginData();
+        private DataBase dataBase;
+
+        public LoginVM()
+        {
+            dataBase = new DataBase(loginData);
+        }
 
 
         public string server
@@ -38,6 +45,18 @@ using System.Windows.Input;
             get { return loginData.Message; }
         }
 
+        public Brush messageColor
+        {
+            get
+            {
+                Color c;
+                if (dataBase.isConnected) c = Color.FromArgb(255, 0, 155, 0);
+                else if (dataBase.errorConnecting) c = Color.FromArgb(255, 225, 0, 0);
+                else c = Color.FromArgb(255, 0, 0, 0);
+                return new SolidColorBrush(c);
+            }
+        }
+
 
         private ICommand loginCmd;
         public ICommand LoginCmd
@@ -47,8 +66,9 @@ using System.Windows.Input;
                 if (loginCmd == null) loginCmd = new RelayCommand(
                     (object o) =>
                     {
-                        loginData.TryLogin();
+                        dataBase.TryConnect();
                         onPropertyChanged("message");
+                        onPropertyChanged("messageColor");
                     },
                     (object o) =>
                     {

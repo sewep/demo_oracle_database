@@ -28,9 +28,10 @@
             <Label Content="Login"/>
             <TextBox Width="160" Text="{Binding Path=login, Mode=TwoWay}"/>
             <Label Content="Password"/>
-            <PasswordBox Width="160" PasswordChanged="PasswordBox_PasswordChanged"/>
-            <Button Content="Connect" Padding="10,5,10,5" Command="{Binding LoginCmd}"/>
+            <PasswordBox Width="160" PasswordChanged="PasswordBox_PasswordChanged" Password="P@ssw0rd"/>
+            <Button Content="Test connection" Padding="10,5,10,5" Command="{Binding LoginCmd}"/>
         </WrapPanel>
-        <Label Content="{Binding Path=message, Mode=OneWay}" HorizontalAlignment="Center"/>
+        <TextBlock Text="{Binding Path=message, Mode=OneWay}" HorizontalAlignment="Center" TextWrapping="Wrap" Margin="0,10,0,5" FontWeight="Bold"
+                   Foreground="{Binding Path=messageColor, Mode=OneWay}"/>
     </StackPanel>
 </UserControl>

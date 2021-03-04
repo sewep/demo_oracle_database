@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OracleBase.Model;
 
 namespace OracleBase.ViewModel
 {
     using Model;
     using System.Windows.Input;
     using System.Windows.Media;
+    using OracleBase.Model.DBase;
 
 
     public class LoginVM : ObservedObject
@@ -43,16 +45,17 @@ namespace OracleBase.ViewModel
         public string message
         {
             get { return loginData.Message; }
+            set { loginData.Message = value; }
         }
 
+        
         public Brush messageColor
         {
             get
             {
-                Color c;
-                if (dataBase.isConnected) c = Color.FromArgb(255, 0, 155, 0);
-                else if (dataBase.errorConnecting) c = Color.FromArgb(255, 225, 0, 0);
-                else c = Color.FromArgb(255, 0, 0, 0);
+                Color c = Color.FromArgb(255, 0, 0, 0);
+                if (loginData.TestConnectionSucces == true) c = Color.FromArgb(255, 0, 175, 0);
+                if (loginData.TestConnectionSucces == false) c = Color.FromArgb(255, 225, 0, 0);
                 return new SolidColorBrush(c);
             }
         }
@@ -66,7 +69,9 @@ namespace OracleBase.ViewModel
                 if (loginCmd == null) loginCmd = new RelayCommand(
                     (object o) =>
                     {
-                        dataBase.TryConnect();
+                        SqlBase.loginData = loginData; // Reference to connection info
+                        var db = new TestConnection();
+                        db.Test();
                         onPropertyChanged("message");
                         onPropertyChanged("messageColor");
                     },

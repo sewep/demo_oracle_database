@@ -12,11 +12,6 @@ namespace OracleBase.Model
         public string Server = "localhost";
         public string Login = "DEV_DATA_1";
         public string Password = "";
-        public string Message = "Enter your login details and click Connect.";
-
-        public void TryLogin()
-        {
-            Message = "Try to login...";
-        }
+        public string Message = "Enter your login details and click Test connection.";
     }
 }

@@ -16,12 +16,6 @@ namespace OracleBase.ViewModel
     public class LoginVM : ObservedObject
     {
         private LoginData loginData = new LoginData();
-        private DataBase dataBase;
-
-        public LoginVM()
-        {
-            dataBase = new DataBase(loginData);
-        }
 
 
         public string server

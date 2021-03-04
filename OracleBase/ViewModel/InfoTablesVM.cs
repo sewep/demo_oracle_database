@@ -1,4 +1,5 @@
 ﻿using OracleBase.Model;
+using OracleBase.Model.DBase;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -33,7 +34,7 @@ namespace OracleBase.ViewModel
                     },
                     (object o) =>
                     {
-                        return DataBase.Instance != null && DataBase.Instance.isConnected;
+                        return SqlBase.loginData != null && SqlBase.loginData.TestConnectionSucces == true;
                     });
                 return loadDataCommand;
             }

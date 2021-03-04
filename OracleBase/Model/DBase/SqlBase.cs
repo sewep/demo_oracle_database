@@ -11,7 +11,7 @@ namespace OracleBase.Model.DBase
     public class SqlBase
     {
         public static LoginData loginData;
-        OracleConnection oracleConnection;
+        protected OracleConnection oracleConnection;
         protected string conErrorMsg = "";
 
         protected bool Connect()

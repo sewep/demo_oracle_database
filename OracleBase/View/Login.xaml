@@ -24,9 +24,9 @@
     <StackPanel>
         <WrapPanel>
             <Label Content="Server"/>
-            <TextBox Width="160" Text="{Binding Path=server, Mode=TwoWay}"/>
+            <TextBox Width="160" Text="{Binding Path=server, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <Label Content="Login"/>
-            <TextBox Width="160" Text="{Binding Path=login, Mode=TwoWay}"/>
+            <TextBox Width="160" Text="{Binding Path=login, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <Label Content="Password"/>
             <PasswordBox Width="160" PasswordChanged="PasswordBox_PasswordChanged" Password="P@ssw0rd"/>
             <Button Content="Test connection" Padding="10,5,10,5" Command="{Binding LoginCmd}"/>

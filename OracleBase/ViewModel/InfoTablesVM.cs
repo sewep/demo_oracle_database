@@ -13,6 +13,7 @@ namespace OracleBase.ViewModel
     public class InfoTablesVM : ObservedObject
     {
         private ObservableCollection<Model.InfoTablePos> infoList;
+
         public ObservableCollection<Model.InfoTablePos> InfoList
         {
             get { return infoList; }
@@ -28,7 +29,8 @@ namespace OracleBase.ViewModel
                 if (loadDataCommand == null) loadDataCommand = new RelayCommand(
                     (object o) =>
                     {
-                        var list = DataBase.Instance.getInfoTables();
+                        var db = new NumberColumns();
+                        var list = db.getColumns();
                         infoList = new ObservableCollection<InfoTablePos>(list);
                         onPropertyChanged("InfoList");
                     },

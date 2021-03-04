@@ -8,5 +8,10 @@
         <Grid DockPanel.Dock="Top" VerticalAlignment="Top" Margin="5,5,5,5">
             <v:Login/>    
         </Grid>
+        
+        <Grid Margin="10,5,5,5">
+            <v:InfoTables/>
+        </Grid>
+        
     </DockPanel>
 </Window>

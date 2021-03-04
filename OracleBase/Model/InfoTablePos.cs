@@ -8,10 +8,19 @@ namespace OracleBase.Model
 {
     public class InfoTablePos
     {
-        public string tableName = "";
-        public string columnName = "";
-        public int columnId = 0;
-        public string dataType = "";
-        public int dataLength = 0;
+        public string tableName { get; set; }
+        public string columnName { get; set; }
+        public int columnId { get; set; }
+        public string dataType { get; set; }
+        public int dataLength { get; set; }
+
+        public InfoTablePos()
+        {
+            tableName = "";
+            columnName = "";
+            columnId = 0;
+            dataType = "";
+            dataLength = 0;
+        }
     }
 }

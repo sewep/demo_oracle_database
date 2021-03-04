@@ -1,6 +1,7 @@
 ﻿using OracleBase.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,8 +11,12 @@ namespace OracleBase.ViewModel
 {
     public class InfoTablesVM : ObservedObject
     {
-
-
+        private ObservableCollection<Model.InfoTablePos> infoList;
+        public ObservableCollection<Model.InfoTablePos> InfoList
+        {
+            get { return infoList; }
+            set { infoList = value; }
+        }
 
 
         private ICommand loadDataCommand;
@@ -22,7 +27,9 @@ namespace OracleBase.ViewModel
                 if (loadDataCommand == null) loadDataCommand = new RelayCommand(
                     (object o) =>
                     {
-                        // TODO: Ładowanie danych
+                        var list = DataBase.Instance.getInfoTables();
+                        infoList = new ObservableCollection<InfoTablePos>(list);
+                        onPropertyChanged("InfoList");
                     },
                     (object o) =>
                     {

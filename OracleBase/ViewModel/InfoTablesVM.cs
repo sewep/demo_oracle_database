@@ -1,4 +1,5 @@
 ﻿using OracleBase.Model;
+using OracleBase.Model.DBase;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,6 +13,7 @@ namespace OracleBase.ViewModel
     public class InfoTablesVM : ObservedObject
     {
         private ObservableCollection<Model.InfoTablePos> infoList;
+
         public ObservableCollection<Model.InfoTablePos> InfoList
         {
             get { return infoList; }
@@ -27,13 +29,14 @@ namespace OracleBase.ViewModel
                 if (loadDataCommand == null) loadDataCommand = new RelayCommand(
                     (object o) =>
                     {
-                        var list = DataBase.Instance.getInfoTables();
+                        var db = new NumberColumns();
+                        var list = db.getColumns();
                         infoList = new ObservableCollection<InfoTablePos>(list);
                         onPropertyChanged("InfoList");
                     },
                     (object o) =>
                     {
-                        return DataBase.Instance != null && DataBase.Instance.isConnected;
+                        return SqlBase.loginData != null && SqlBase.loginData.TestConnectionSucces == true;
                     });
                 return loadDataCommand;
             }

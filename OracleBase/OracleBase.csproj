@@ -86,7 +86,6 @@
     <Compile Include="Model\DBase\TestConnection.cs" />
     <Compile Include="Model\InfoTablePos.cs" />
     <Compile Include="Model\LoginData.cs" />
-    <Compile Include="ViewModel\DbStateToBrushConverter.cs" />
     <Compile Include="ViewModel\InfoTablesVM.cs" />
     <Compile Include="ViewModel\LoginVM.cs" />
     <Compile Include="ViewModel\ObservedObject.cs" />
